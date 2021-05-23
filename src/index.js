@@ -1,12 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const Global = createGlobalStyle`
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: consolas;
+}
+`
+
+const theme = {
+  colors: {
+    primary: 'green',
+    secondary: 'red',
+  },
+
+  media: {
+    tablet: "(max-width:768px) and (min-width: 440px)",
+    phone: "(max-width:440px)",
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Global />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
